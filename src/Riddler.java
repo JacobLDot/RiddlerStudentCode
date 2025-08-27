@@ -4,7 +4,7 @@
  * for Adventures in Algorithms
  * At Menlo School in Atherton, CA
  *
- * Completed by: YOUR NAME HERE
+ * Completed by: Jacob Lowe
  */
 public class Riddler {
 
@@ -14,13 +14,23 @@ public class Riddler {
         String decrypted = "";
         for (int i = 0; i < encrypted.length(); i++) {
             char letter = encrypted.charAt(i);
+
+            // Check if character is uppercase
             if (Character.isUpperCase(letter)) {
+
+                // Shifts the uppercase letter forward by 9 in the alphabet
                 char shiftedLetter = (char) ((encrypted.charAt(i) - 'A' + 9) % 26 + 'A');
                 decrypted += shiftedLetter;
-            } else if (Character.isLowerCase(letter)) {
+            }
+
+            // Check if the character is lowercase
+            else if (Character.isLowerCase(letter)) {
+
+                // Shifts the lowercase letter forward by 9 in the alphabet
                 char shiftedLetter = (char) ((encrypted.charAt(i) - 'a' + 9) % 26 + 'a');
                 decrypted += shiftedLetter;
             } else {
+                // Keep the spaces, periods, etc the same
                 decrypted += letter;
             }
         }
@@ -31,12 +41,20 @@ public class Riddler {
         // TODO: Complete the decryptTwo() function.
 
         String decrypted = "";
+
+        // Used to store ASCII values
         String number = "";
         for (int i = 0; i < encrypted.length(); i++) {
             if (encrypted.charAt(i) != ' ') {
+                // Collect the ASCII values associated with the number
                 number += encrypted.charAt(i);
             } else {
                 if (!number.isEmpty()) {
+                    // Convert the string version of the numbmer to an integer
+
+                    // Then convert the ASCII value of the integer to the ASCII
+                    // value associated with that number and add the letter to
+                    // the string
                     int asciiValue = Integer.parseInt(number);
                     char letter = (char) asciiValue;
                     decrypted += letter;
@@ -53,7 +71,11 @@ public class Riddler {
         String decrypted = "";
         String binaryNumber = "";
         for (int i = 0; i < (encrypted.length()) - 8; i+=8) {
+
+            // Take groups of 8 numbers from the long binary string
             binaryNumber += encrypted.substring(i, i + 8);
+
+            // Convert the binary string to an integer and then to a character
             char letter = (char)Integer.parseInt(binaryNumber, 2);
             decrypted += letter;
             binaryNumber = "";
