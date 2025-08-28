@@ -84,10 +84,15 @@ public class Riddler {
     }
 
     public String decryptFour(String encrypted) {
-        String decrypted = "";
-
         // TODO: Complete the decryptFour() function.
 
+        String decrypted = "";
+        for (int i = 0; i < encrypted.length(); i++) {
+            char emoji = encrypted.charAt(i);
+            int unicodeDecimal = (int)emoji;
+            int asciiValue = unicodeDecimal-9919;
+            decrypted += (char)asciiValue;
+        }
         return decrypted;
     }
 }
